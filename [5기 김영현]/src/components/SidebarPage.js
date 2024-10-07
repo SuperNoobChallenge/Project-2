@@ -1,15 +1,24 @@
+import NewBtn from './NewBtn.js'
+
 export default function SidebarPage({ $target, intialState }) {
     this.state = intialState
 
     this.createTreeView = (data) => {
+        console.log('createTreeView', data)
         let str = ''
-        for (const row of data) {
-            str += `<li class="dataList">😐 ${row.title}    
-            <button class="addBtn">+</button>
-            <button class="delBtn">-</button>
-            </li>
-            ${document.documents.length > 0 ? `<ul></ul>` : ''}
-            `
+        for (const key in data) {
+            if (data[key].documents.length > 0) {
+                str += `<li class="dataList">📄 ${data[key].title}
+                  <button class="addBtn">➕</button>
+                  <button class="delBtn">🗑️</button>
+                    <ul>${this.createTreeView(data[key].documents)}</ul>
+                  </li>`
+            } else {
+                str += `<li class="dataList">📄 ${data[key].title}
+                  <button class="addBtn">➕</button>
+                  <button class="delBtn">🗑️</button>
+                </li>`
+            }
         }
         return str
     }
@@ -24,7 +33,7 @@ export default function SidebarPage({ $target, intialState }) {
                 <button class="addBtn">+</button>
                 <button class="delBtn">-</button>
                 </li>
-                ${document.documents.length > 0 ? `<ul></ul>` : ''}
+                ${row.documents.length > 0 ? `<ul></ul>` : ''}
 
                 `
                 )
@@ -33,4 +42,6 @@ export default function SidebarPage({ $target, intialState }) {
         </ul>
     `
     $target.appendChild($page)
+    const $newBtn = new NewBtn({ $target })
+    $target.appendChild(NewBtn)
 }

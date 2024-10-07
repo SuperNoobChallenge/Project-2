@@ -21,3 +21,37 @@ li {
     overflow: auto;
     resize: horizontal;
 }
+
+.newBtn {
+    background-color: #f7f6f3;
+    border: none;
+    font-size: 1.2rem;
+    text-align: left;
+    width: 100%;
+    height: 20px;
+}
+
+.newBtn:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.editorPage {
+    display: flex;
+    flex-direction: column;
+    margin: 10% 0% 0% 20%;
+}
+
+.editorTitle {
+    border: none;
+    font-size: 1.5rem;
+    width: 100%;
+    color: #808080;
+}
+
+.editorContent {
+    border: none;
+    font-size: 1.5rem;
+    width: 100%;
+    color: #808080;
+}
